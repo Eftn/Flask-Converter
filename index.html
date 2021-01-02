@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link  href="../static/app.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Forex Converter</h1>
+        <h2>Convert from one currency to <span id="another">another</span>.</h2>
+    </header>
+    <div class="container">
+        <div class="form-window">
+            {% for msg in get_flashed_messages() %}
+            <div class="message">
+                <p>{{msg}}</p>
+            </div>
+            {% endfor %}
+            <form method="POST">
+                <label for="curr-from">Converting from: </label>
+                <input type="text" name="curr-from" id="curr-from" placeholder="USD" maxlength="3">
+                <label for="curr-to">Converting to: </label>
+                <input type="text" name="curr-to" id="curr-to" placeholder="GBP" maxlength="3"> 
+                <label for="amt">Amount: </label>
+                <input type="text" name="amt" id="amt" placeholder="0.00">
+                <button>Submit!</button>
+            </form>
+            
+            <div class="results">
+                {{resulting_data}}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p id="credit">Built using <a href="https://forex-python.readthedocs.io/en/latest/index.html">forex-python</a></p>
+    </footer>
+</body>
+</html>
